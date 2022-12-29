@@ -21,7 +21,7 @@ function writeInForm() {
     refs.messageEl.value = parsedValue.message;
   }
 }
-function onFormInput() {
+function onFormInput(evt) {
   formData = {
     email: refs.emailEl.value,
     message: refs.messageEl.value,
