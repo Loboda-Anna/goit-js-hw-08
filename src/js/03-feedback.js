@@ -6,10 +6,7 @@ const refs = {
   emailEl: document.querySelector('form input'),
   messageEl: document.querySelector('form textarea'),
 };
-const formData = {
-  email: '',
-  message: '',
-};
+let formData = {};
 const savedValue = localStorage.getItem(STORAGE_KEY);
 const parsedValue = JSON.parse(savedValue);
 
@@ -24,8 +21,11 @@ function writeInForm() {
     refs.messageEl.value = parsedValue.message;
   }
 }
-function onFormInput(evt) {
-  formData[evt.target.name] = evt.target.value;
+function onFormInput() {
+  formData = {
+    email: refs.emailEl.value,
+    message: refs.messageEl.value,
+  };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 }
 function onFormSubmit(evt) {
