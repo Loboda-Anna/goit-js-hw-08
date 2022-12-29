@@ -30,7 +30,7 @@ function onFormInput(evt) {
 }
 function onFormSubmit(evt) {
   evt.preventDefault();
-  console.log(formData);
+  console.log(parsedValue);
   refs.form.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
