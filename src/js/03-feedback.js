@@ -7,15 +7,14 @@ const refs = {
   messageEl: document.querySelector('form textarea'),
 };
 let formData = {};
+const savedValue = localStorage.getItem(STORAGE_KEY);
+const parsedValue = JSON.parse(savedValue);
 
 refs.form.addEventListener('submit', onFormSubmit);
 refs.form.addEventListener('input', throttle(onFormInput, 500));
 
 writeInForm();
-
 function writeInForm() {
-  const savedValue = localStorage.getItem(STORAGE_KEY);
-  const parsedValue = JSON.parse(savedValue);
   if (parsedValue) {
     refs.emailEl.value = parsedValue.email;
     refs.messageEl.value = parsedValue.message;
@@ -30,7 +29,7 @@ function onFormInput(evt) {
 }
 function onFormSubmit(evt) {
   evt.preventDefault();
-  console.log(formData);
+  console.log(parsedValue);
   refs.form.reset();
   localStorage.removeItem(STORAGE_KEY);
 }
